@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-light navbar-expand-md">
+  <div class="container-fluid">
+
+    <a class="navbar-brand mb-0 h1">Recipe Book</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="recipes" routerLinkActive="active">Recipes</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" routerLink="shopping-list" routerLinkActive="active">Shopping List</a>
+        </li>
+        <li class=" nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            appDropdown>
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" style="cursor: pointer;">Action</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer;">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" style="cursor: pointer;">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
