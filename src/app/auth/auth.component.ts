@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AlertComponent } from '../shared/alert/alert/alert.component';
 import { AuthResponseData, AuthService } from './auth.service';
 
 @Component({
@@ -53,6 +54,10 @@ export class AuthComponent {
     })
 
     form.reset()
+  }
+
+  onHandleError(){
+    this.error = null
   }
 
 }
