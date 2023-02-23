@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
+import { environment } from 'src/environments/environment';
 
 export interface AuthResponseData {
   idToken: string
@@ -24,12 +25,12 @@ export class AuthService {
   constructor(private http_client: HttpClient, private router: Router) { }
 
   signup(email: string, password: string) {
-    return this.http_client.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAtP3Ue4t5xpTFWgYzA07jH9PxuE_OdNM8`,
+    return this.http_client.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.FIREBASE_API}`,
       { email: email, password: password, returnSecureToken: true }).pipe(catchError(this.handleError))
   }
 
   login(email: string, password: string) {
-    return this.http_client.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAtP3Ue4t5xpTFWgYzA07jH9PxuE_OdNM8`,
+    return this.http_client.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.FIREBASE_API}`,
       { email: email, password: password, returnSecureToken: true }).pipe(tap(res => {
         this.handleAuthentication(res.email, res.localId, res.idToken, +res.expiresIn)
       }), catchError(this.handleError))
